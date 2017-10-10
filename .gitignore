@@ -37,3 +37,4 @@ vignettes/*.pdf
 /data/
 data/
 .txt
+.Rproj.user
