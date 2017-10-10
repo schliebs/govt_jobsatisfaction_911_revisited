@@ -34,8 +34,7 @@ vignettes/*.pdf
 
 # Data
 
-/data/
-data/
+data_offline/
 *.docx
 .pdf
 testignore/
