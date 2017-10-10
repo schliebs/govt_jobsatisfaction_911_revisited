@@ -1,11 +1,7 @@
-library(plyr)
-library(tidyverse)
-library(haven)
-library(magrittr)
+source("R/packages.R")
+source("R/make_dictionary.R")
 
-source("make_dictionary.R")
-
-gss_all <- read_spss("GSS7216_R2.sav")
+gss_all <- read_spss("data-offline/GSS7216_R2.sav")
 meta_file <- make_dictionary(gss,format = "wide")
 
 
@@ -52,10 +48,6 @@ table(satis = gss2002$satis_cat,y2002 = gss2002$employ) %>% prop.table(2) %>% ro
 model <- glm(factor(satis_cat) ~ YEAR * employ,family=binomial(link='logit'),data=gss)
 summary(model)
 
-library(ggplot2)
-library(extrafont)
-library(hrbrthemes)
-library(extrafont) # neue Schriftarten
 
 
 
