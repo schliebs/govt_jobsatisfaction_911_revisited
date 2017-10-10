@@ -36,7 +36,7 @@ vignettes/*.pdf
 
 /data/
 data/
-.docx
+*.docx
 .pdf
 testignore/
 .Rproj.user
