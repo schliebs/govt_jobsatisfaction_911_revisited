@@ -35,6 +35,7 @@ vignettes/*.pdf
 # Data
 
 data-offline/
+data_offline/
 */offline/
 offline/
 
