@@ -1,39 +1,3 @@
-source("R/packages.R")
-source("R/make_dictionary.R")
-
-gss_all <- read_spss("data-offline/GSS7216_R2.sav")
-meta_file <- make_dictionary(gss,format = "wide")
-
-
-# Hallo Ben 
-
-gss <- 
-  gss_all %>% 
-  filter(YEAR %in% c(2000,2002)) %>% 
-  filter(PARTFULL %in% 1)
-
-# Employer
-
-gss$employ <- c()
-gss$employ [gss$WRKGOVT %in% c(1)] <- "GOV"
-gss$employ [gss$WRKGOVT %in% c(2)] <- "PRIV"
-
-gss$employ %>% table()
-
-# Job satisfaction 
-
-unique(gss$SATJOB)
-
-gss$satis_cat <- c()
-gss$satis_cat [gss$SATJOB %in% c(1,2)] <- "+"
-gss$satis_cat [gss$SATJOB %in% c(3,4)] <- "-"
-
-gss$satis_cat %>% table(satis = .,year = gss$YEAR) %>% prop.table(2) %>% round(2)
-
-#########
-
-
-
 ##########
 
 # 2000
@@ -47,8 +11,6 @@ gss2002 <- gss %>%
 table(satis = gss2000$satis_cat,y2000 = gss2000$employ) %>% prop.table(2) %>% round(2)
 table(satis = gss2002$satis_cat,y2002 = gss2002$employ) %>% prop.table(2) %>% round(2)
 
-model <- glm(factor(satis_cat) ~ YEAR * employ,family=binomial(link='logit'),data=gss)
-summary(model)
 
 
 
@@ -102,16 +64,6 @@ mod_priv <- glm(factor(satis_cat) ~
 summary(mod_priv)
 
 
-# Dep. Var
-
-gss$satis <- c()
-gss$satis [gss$SATJOB %in% c(1)] <- 1
-gss$satis [gss$SATJOB %in% c(2)] <- 2
-gss$satis [gss$SATJOB %in% c(3)] <- 3
-gss$satis [gss$SATJOB %in% c(4)] <- 4
-
-gss$satis %>% table(satis = .,year = gss$YEAR) %>% prop.table(2) %>% round(2)
-
 
 # 2000
 gss2000 <- gss %>% 
@@ -129,17 +81,6 @@ summary(model)
 
 
 # Search for Latent variable bias
-
-# fear of losing JOB
-
-gss$fear_loss <- NA
-gss$fear_loss [gss$JOBLOSE %in% c(1,2)] <- "fear"
-gss$fear_loss [gss$JOBLOSE %in% c(3,4)] <- "no fear"
-
-table(gss$fear_loss,gss$YEAR) %>% prop.table(2) %>% round(2)
-table(gss$fear_loss,gss$employ)%>% prop.table(2) %>% round(2)
-table(gss$fear_loss,gss$satis_cat)%>% prop.table(1) %>% round(2)
-
 
 model <- glm(factor(satis_cat) ~ YEAR * employ + employ*fear_loss,family=binomial(link='logit'),data=gss)
 summary(model)
