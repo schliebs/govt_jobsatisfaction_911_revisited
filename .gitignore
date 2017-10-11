@@ -34,8 +34,8 @@ vignettes/*.pdf
 
 # Data
 
-data_offline/
-*.docx
-.pdf
-testignore/
+data-offline/
+*/offline/
+offline/
+
 .Rproj.user
