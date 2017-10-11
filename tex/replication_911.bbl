@@ -1,0 +1,26 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Lamport%
+}{%
+Lamport%
+}{%
+{\protect \APACyear {1986}}%
+}]{%
+Lamport1986}
+\APACinsertmetastar {%
+Lamport1986}%
+\begin{APACrefauthors}%
+Lamport, L\BPBI A.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1986}{{\APACmonth{07}}}{}.
+\newblock
+{\BBOQ}\APACrefatitle {The Gnats and Gnus Document Preparation System} {The
+  gnats and gnus document preparation system}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{G-Animal's Journal}{41}{7}{73+}.
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}

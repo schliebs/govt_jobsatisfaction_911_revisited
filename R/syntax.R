@@ -5,6 +5,8 @@ gss_all <- read_spss("data-offline/GSS7216_R2.sav")
 meta_file <- make_dictionary(gss,format = "wide")
 
 
+# Hallo Ben 
+
 gss <- 
   gss_all %>% 
   filter(YEAR %in% c(2000,2002)) %>% 
